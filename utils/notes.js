@@ -16,6 +16,14 @@ const loadNotes = ()  => {
     }
 }
 
+const listNotes = () => {
+    const allNotes = loadNotes();
+
+    allNotes.map((note, index) => {
+        console.log(`${index+1}. ${note.reminder}`);
+    });
+};
+
 const saveNotes = allNotes => {
     const notesJson = JSON.stringify(allNotes);
     fs.writeFileSync("src/notes.json", notesJson) 
@@ -23,5 +31,6 @@ const saveNotes = allNotes => {
 
 module.exports = {
     loadNotes,
-    addNote
+    addNote,
+    listNotes
 }
