@@ -29,8 +29,17 @@ const saveNotes = allNotes => {
     fs.writeFileSync("src/notes.json", notesJson) 
 }
 
+const removeNote = noteToDelete => {
+    const allNotes = loadNotes()
+
+    const notesToKeep = allNotes.filter(note => {
+        return note.reminder != noteToDelete
+    })
+}
+
 module.exports = {
     loadNotes,
     addNote,
-    listNotes
+    listNotes,
+    removeNote
 }
